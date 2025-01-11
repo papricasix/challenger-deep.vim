@@ -26,7 +26,8 @@ endif
 
 " Colors
 let s:black           = { "gui": "#212121", "cterm": "0", "cterm16" : "8" }
-let s:medium_gray     = { "gui": "#767676", "cterm": "243", "cterm16" : "243" }
+" let s:medium_gray     = { "gui": "#767676", "cterm": "243", "cterm16" : "243" }
+let s:medium_gray     = { "gui": "#909090", "cterm": "243", "cterm16" : "243" }
 let s:white           = { "gui": "#F3F3F3", "cterm": "15", "cterm16" : "15" }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231", "cterm16" : "231" }
 let s:light_black     = { "gui": "#424242", "cterm": "8", "cterm16" : "0" }
@@ -62,6 +63,24 @@ let s:dark_cyan = { "gui": "#63f2f1", "cterm": "121", "cterm16": "14"}
 
 let s:clouds = { "gui": "#cbe3e7", "cterm": "253", "cterm16": "7"}
 let s:dark_clouds = { "gui": "#a6b3cc", "cterm": "252", "cterm16": "15"}
+
+let s:nvim_light_red = { "gui": "#ffc0b9", "cterm": "204", "cterm16": "1"}
+let s:nvim_dark_red = { "gui": "#590008", "cterm": "203", "cterm16": "9"}
+
+let s:nvim_light_yellow = { "gui": "#FCE094", "cterm": "228", "cterm16": "3"} 
+let s:nvim_dark_yellow = { "gui": "#6b5300", "cterm": "215", "cterm16": "11"} 
+
+let s:nvim_light_magenta = { "gui": "#FFCAFF", "cterm": "141", "cterm16": "5"}
+let s:nvim_dark_magenta = { "gui": "#470045", "cterm": "135", "cterm16": "13"}
+
+let s:nvim_light_cyan = { "gui": "#8cf8f7", "cterm": "122", "cterm16": "6"} 
+let s:nvim_dark_cyan = { "gui": "#007373", "cterm": "121", "cterm16": "14"} 
+
+let s:nvim_light_green = { "gui": "#b4f6c0", "cterm": "120", "cterm16": "2"} 
+let s:nvim_dark_green = { "gui": "#005523", "cterm": "119", "cterm16": "10"} 
+
+let s:nvim_light_blue = { "gui": "#A6DBFF", "cterm": "159", "cterm16": "4"} 
+let s:nvim_dark_blue = { "gui": "#004c63", "cterm": "75", "cterm16": "12"} 
 
 let s:bg              = s:asphalt
 let s:bg_subtle       = s:asphalt_subtle
@@ -106,11 +125,12 @@ endfunction
 " (see `:h w18`)
 
 call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
-hi! link NormalNC         Normal
 call s:h("NormalSB",      {"bg": s:bg_subtle, "fg": s:norm})
-hi! link NormalFloat      NormalSB
 call s:h("Cursor",        {"bg": s:blue, "fg": s:bg_dark})
 call s:h("Comment",       {"fg": s:medium_gray, "gui": "italic", "cterm": "italic"})
+
+hi! link NormalNC         Normal
+hi! link NormalFloat      NormalSB
 
 call s:h("Constant",      {"fg": s:yellow})
 hi! link String           Constant
@@ -119,6 +139,8 @@ hi! link Character        Constant
 call s:h("Number",       {"fg": s:dark_yellow})
 hi! link Boolean          Constant
 hi! link Float            Constant
+hi! link FloatBorder      Constant
+hi! link FloatTitle       Constant
 
 call s:h("Identifier",    {"fg": s:purple})
 hi! link Function         Identifier
@@ -190,6 +212,12 @@ call s:h("DiffDelete",    {"fg": s:red})
 call s:h("DiffChange",    {"fg": s:dark_yellow})
 call s:h("DiffText",      {"fg": s:dark_blue})
 call s:h("SignColumn",    {"fg": s:green})
+
+call s:h("DiagnosticVirtualTextError", {"fg": s:nvim_light_red, "bg": s:nvim_dark_red})
+call s:h("DiagnosticVirtualTextWarn",  {"fg": s:nvim_light_yellow, "bg": s:nvim_dark_yellow})
+call s:h("DiagnosticVirtualTextInfo",  {"fg": s:nvim_light_cyan, "bg": s:nvim_dark_cyan})
+call s:h("DiagnosticVirtualTextHint",  {"fg": s:nvim_light_blue, "bg": s:nvim_dark_blue})
+call s:h("DiagnosticVirtualTextOk",    {"fg": s:nvim_light_green, "bg": s:nvim_dark_green})
 
 if has("gui_running")
   call s:h("SpellBad",    {"gui": "underline", "sp": s:dark_red})
@@ -326,6 +354,9 @@ call s:h("GitGutterAdd",{"fg": s:green, "bg": s:bg_subtle})
 call s:h("GitGutterDelete",{"fg": s:red, "bg": s:bg_subtle})
 call s:h("GitGutterChange",{"fg": s:yellow, "bg": s:bg_subtle})
 call s:h("GitGutterChangeDelete",{"fg": s:red, "bg": s:bg_subtle})
+
+" " nvim-notify
+" call s:h("NotifyBackground",{"fg": s:norm, "bg": s:bg})
 
 
 "nvim terminal colors
