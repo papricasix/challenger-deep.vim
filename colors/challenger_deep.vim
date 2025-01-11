@@ -106,6 +106,9 @@ endfunction
 " (see `:h w18`)
 
 call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
+hi! link NormalNC         Normal
+call s:h("NormalSB",      {"bg": s:bg_subtle, "fg": s:norm})
+hi! link NormalFloat      NormalSB
 call s:h("Cursor",        {"bg": s:blue, "fg": s:bg_dark})
 call s:h("Comment",       {"fg": s:medium_gray, "gui": "italic", "cterm": "italic"})
 
